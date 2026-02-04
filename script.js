@@ -11,13 +11,27 @@ const toggleLoader = () => loader.classList.toggle("hidden");
 // pintar usuario
 const printUsers = (users) => {
   container.innerHTML = "";
+  if (!Array.isArray(users)) return;
+
   users.forEach((user) => {
+    // nombres en español que suelen venir en estas APIs
+    const nombreCompleto = `${user.nombre || user.name || "Sin nombre"} ${user.apellidos || ""}`;
+    const email = user.email || user.correo || "No disponible";
+
+    // colección y wishlist pueden venir como arrays de objetos o strings
+    const libros = Array.isArray(user.coleccionLibros)
+      ? user.coleccionLibros.join(", ")
+      : "Vacía";
+    const wishlist = Array.isArray(user.wishlist)
+      ? user.wishlist.join(", ")
+      : "Vacía";
+
     container.innerHTML += `
             <div class="card">
-                <h3>Usuario: ${user.name}</h3>
-                <p>Email: ${user.email}</p>
-                <p>Libros: ${user.books.join(", ")}</p>
-                <p>Wishlist: ${user.wishlist.join(", ")}</p>
+                <h3>👤 ${nombreCompleto}</h3>
+                <p>📧 <b>Email:</b> ${email}</p>
+                <p>📚 <b>Colección:</b> ${libros}</p>
+                <p>⭐ <b>Wishlist:</b> ${wishlist}</p>
             </div>
         `;
   });
