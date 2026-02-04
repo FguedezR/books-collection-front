@@ -37,3 +37,31 @@ const printBooks = (books) => {
         `;
   });
 };
+
+// eventos
+btnUsers.addEventListener("click", async () => {
+  toggleLoader();
+  try {
+    const res = await fetch(`${API_URL}/users`);
+    const data = await res.json();
+    printUsers(data);
+  } catch (err) {
+    alert("Error conectando al servidor");
+  } finally {
+    toggleLoader();
+  }
+});
+
+
+btnBooks.addEventListener('click', async () => {
+    toggleLoader();
+    try {
+        const res = await fetch(`${API_URL}/books`);
+        const data = await res.json();
+        printBooks(data);
+    } catch (err) {
+        alert("Error conectando al servidor");
+    } finally {
+        toggleLoader();
+    }
+});
