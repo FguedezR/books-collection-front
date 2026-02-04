@@ -22,3 +22,18 @@ const printUsers = (users) => {
         `;
   });
 };
+
+// pintar Libros
+const printBooks = (books) => {
+  container.innerHTML = "";
+  books.forEach((book) => {
+    container.innerHTML += `
+            <div class="card">
+                <img src="${book.image}" alt="${book.title}">
+                <h3>📖 ${book.title}</h3>
+                <p>✍️ <b>Autor:</b> ${book.author}</p>
+                <p>📅 <b>Publicado:</b> ${book.year}</p>
+            </div>
+        `;
+  });
+};
