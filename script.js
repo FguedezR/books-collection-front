@@ -30,9 +30,9 @@ const printBooks = (books) => {
     container.innerHTML += `
             <div class="card">
                 <img src="${book.image}" alt="${book.title}">
-                <h3>📖 ${book.title}</h3>
-                <p>✍️ <b>Autor:</b> ${book.author}</p>
-                <p>📅 <b>Publicado:</b> ${book.year}</p>
+                <h3>Libro${book.title}</h3>
+                <p>✍️<b>Autor:</b> ${book.author}</p>
+                <p><b>Publicado:</b> ${book.year}</p>
             </div>
         `;
   });
@@ -52,16 +52,15 @@ btnUsers.addEventListener("click", async () => {
   }
 });
 
-
-btnBooks.addEventListener('click', async () => {
+btnBooks.addEventListener("click", async () => {
+  toggleLoader();
+  try {
+    const res = await fetch(`${API_URL}/books`);
+    const data = await res.json();
+    printBooks(data);
+  } catch (err) {
+    alert("Error conectando al servidor");
+  } finally {
     toggleLoader();
-    try {
-        const res = await fetch(`${API_URL}/books`);
-        const data = await res.json();
-        printBooks(data);
-    } catch (err) {
-        alert("Error conectando al servidor");
-    } finally {
-        toggleLoader();
-    }
+  }
 });
