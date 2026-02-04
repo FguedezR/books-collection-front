@@ -30,9 +30,9 @@ const printBooks = (books) => {
     container.innerHTML += `
             <div class="card">
                 <img src="${book.imagen}" alt="${book.title}">
-                <h3>Libro${book.title}</h3>
-                <p>✍️<b>Autor:</b> ${book.author}</p>
-                <p><b>Publicado:</b> ${book.year}</p>
+                <h3><strong>${book.titulo}</strong></h3>
+                <p><strong>Autor:</strong> ${book.autor}</p>
+                <p><b>Publicado:</b> ${book.fechaPublicacion}</p>
             </div>
         `;
   });
