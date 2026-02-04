@@ -57,8 +57,12 @@ btnBooks.addEventListener("click", async () => {
   try {
     const res = await fetch(`${API_URL}/books`);
     const data = await res.json();
+
+    console.log("Datos recibidos de libros:", data);
+
     printBooks(data);
   } catch (err) {
+    console.error(err);
     alert("Error conectando al servidor");
   } finally {
     toggleLoader();
