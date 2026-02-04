@@ -29,7 +29,7 @@ const printBooks = (books) => {
   books.forEach((book) => {
     container.innerHTML += `
             <div class="card">
-                <img src="${book.image}" alt="${book.title}">
+                <img src="${book.imagen}" alt="${book.title}">
                 <h3>Libro${book.title}</h3>
                 <p>✍️<b>Autor:</b> ${book.author}</p>
                 <p><b>Publicado:</b> ${book.year}</p>
